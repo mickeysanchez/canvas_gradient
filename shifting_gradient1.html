@@ -10,13 +10,19 @@
 </head>
 
 <body>
-	<canvas width="800" height="600" id="canvas">
 	
-	<script>
-	// shim
-window.requestAnimFrame = (function(){   return  window.requestAnimationFrame       ||            window.webkitRequestAnimationFrame ||            window.mozRequestAnimationFrame    ||            window.oRequestAnimationFrame      ||            window.msRequestAnimationFrame     ||            function( callback ){             window.setTimeout(callback, 1000 / 60);           }; })(); 
+<canvas width="800" height="600" id="canvas">
 	
-	
+<script>
+	// requestAnimFrame shim a la Paul Irish
+	window.requestAnimFrame = 
+	(function(){   
+	return  window.requestAnimationFrame ||
+		    window.webkitRequestAnimationFrame ||
+			window.mozRequestAnimationFrame ||
+		    window.oRequestAnimationFrame ||
+			window.msRequestAnimationFrame ||
+			function( callback ) { window.setTimeout(callback, 1000 / 60); }; })(); 
 	
 	
 	var x = 0;
@@ -36,21 +42,18 @@ window.requestAnimFrame = (function(){   return  window.requestAnimationFrame   
 		grad.addColorStop(0.4, "orange");
 		grad.addColorStop(0.5, "red");
 		grad.addColorStop(0.6, "orange");
+		grad.addColorStop(0.7, "red");
+		grad.addColorStop(0.8, "orange");
 		grad.addColorStop(1, "black")
-		
-		// if (x > 300) {
-			c.fillStyle = "black";
-			c.font = 25 + "pt Arial ";
-			c.fillText("Game", canvas.width/2, canvas.height/2); 
-		// }
 		
 		c.fillStyle = grad;
 		c.fillRect(0,0,canvas.width,canvas.height);
 		
 		x += 5;
     }
+	
 	window.requestAnimFrame(drawIt)
-	</script>	
+</script>	
 
 </body>
 	
